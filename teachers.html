@@ -25,6 +25,7 @@
   --gradient-green: linear-gradient(135deg,#10b981,#34d399,#6ee7b7);
   --gradient-red: linear-gradient(135deg,#ef4444,#f87171,#fca5a5);
   --gradient-pink: linear-gradient(135deg,#ec4899,#f472b6,#f9a8d4);
+  --gradient-indigo: linear-gradient(135deg,#6366f1,#818cf8,#a5b4fc);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -88,32 +89,41 @@ header.scrolled .burger{color:var(--dark);}
 .section-title h2{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--primary);margin-bottom:20px;letter-spacing:-.02em;line-height:1.15;}
 .section-title p{color:#64748b;font-size:1.1rem;}
 
+.featured-teacher{max-width:1000px;margin:0 auto 100px;background:#fff;border-radius:40px;overflow:hidden;box-shadow:0 50px 120px rgba(10,31,68,.18);display:grid;grid-template-columns:1fr 1.4fr;transition:all .5s;border:1px solid rgba(255,255,255,.6);position:relative;}
+.featured-teacher::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:var(--gradient-ocean);}
+.featured-teacher:hover{transform:translateY(-10px);box-shadow:0 60px 140px rgba(10,31,68,.25);}
+.featured-photo{background:var(--gradient-ocean);display:grid;place-items:center;padding:70px 40px;position:relative;overflow:hidden;}
+.featured-photo::before{content:'';position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 70%);top:-120px;right:-120px;border-radius:50%;}
+.featured-photo::after{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(0,0,0,.15),transparent 70%);bottom:-120px;left:-120px;border-radius:50%;}
+.featured-avatar{width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.98);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:5.5rem;font-weight:900;color:#06b6d4;box-shadow:0 25px 70px rgba(0,0,0,.3);position:relative;z-index:1;animation:floatCard 6s ease-in-out infinite;border:5px solid rgba(255,255,255,.6);}
+.featured-avatar::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:3px dashed rgba(255,255,255,.7);animation:spin 20s linear infinite;}
+.featured-icon{position:absolute;top:30px;right:30px;width:72px;height:72px;border-radius:22px;background:rgba(255,255,255,.98);display:grid;place-items:center;box-shadow:0 15px 40px rgba(0,0,0,.25);z-index:2;transition:transform .5s;}
+.featured-icon svg{width:42px;height:42px;}
+.featured-teacher:hover .featured-icon{transform:rotate(12deg) scale(1.1);}
+.featured-info{padding:70px 60px;display:flex;flex-direction:column;justify-content:center;}
+.featured-info .section-tag{margin-bottom:20px;align-self:flex-start;background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(34,211,238,.15));color:#0891b2;border-color:rgba(6,182,212,.2);}
+.featured-info h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.5rem,2.6vw,2rem);font-weight:900;color:var(--primary);margin-bottom:12px;line-height:1.2;letter-spacing:-.02em;}
+.featured-info .featured-role{color:#06b6d4;font-weight:800;font-size:.95rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;}
+.featured-info p{color:#64748b;font-size:1rem;margin-bottom:28px;line-height:1.7;}
+.featured-quote{padding:24px 28px;background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(34,211,238,.06));border-left:4px solid #06b6d4;border-radius:16px;font-style:italic;color:var(--primary);font-weight:600;font-size:1rem;line-height:1.6;}
+
 .teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:1400px;margin:0 auto;}
 .teacher-card{background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 10px 50px rgba(10,31,68,.08);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;border:1px solid rgba(59,130,246,.08);}
 .teacher-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--card-accent,var(--gradient));transform:scaleX(0);transform-origin:left;transition:transform .5s;z-index:3;}
 .teacher-card:hover{transform:translateY(-14px);box-shadow:0 40px 90px rgba(10,31,68,.15);border-color:rgba(59,130,246,.2);}
 .teacher-card:hover::before{transform:scaleX(1);}
-.teacher-photo{position:relative;height:220px;background:var(--card-accent,var(--gradient));display:grid;place-items:center;overflow:hidden;}
-.teacher-photo::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);top:-100px;right:-100px;border-radius:50%;}
-.teacher-photo::after{content:'';position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(0,0,0,.1),transparent 70%);bottom:-100px;left:-100px;border-radius:50%;}
-.teacher-avatar{width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:3rem;font-weight:900;color:var(--card-color,var(--primary));box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;z-index:2;transition:transform .5s;border:4px solid rgba(255,255,255,.6);}
+.teacher-photo{position:relative;height:230px;background:var(--card-accent,var(--gradient));display:grid;place-items:center;overflow:hidden;}
+.teacher-photo::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);top:-100px;right:-100px;border-radius:50%;}
+.teacher-photo::after{content:'';position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(0,0,0,.12),transparent 70%);bottom:-100px;left:-100px;border-radius:50%;}
+.teacher-avatar{width:135px;height:135px;border-radius:50%;background:rgba(255,255,255,.98);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:3.2rem;font-weight:900;color:var(--card-color,var(--primary));box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;z-index:2;transition:transform .5s;border:4px solid rgba(255,255,255,.7);}
 .teacher-card:hover .teacher-avatar{transform:scale(1.1) rotate(-5deg);}
-.teacher-subject-icon{position:absolute;top:20px;right:20px;width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:2;transition:transform .5s;}
-.teacher-subject-icon svg{width:32px;height:32px;}
-.teacher-card:hover .teacher-subject-icon{transform:rotate(12deg) scale(1.1);}
-.teacher-info{padding:32px 28px 28px;text-align:center;}
-.teacher-info h3{font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;color:var(--primary);margin-bottom:8px;line-height:1.3;letter-spacing:-.01em;}
-.teacher-role{display:inline-block;padding:6px 16px;border-radius:50px;background:rgba(59,130,246,.08);color:var(--card-color,var(--primary-light));font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
-.teacher-subjects{color:#64748b;font-size:.9rem;margin-bottom:20px;line-height:1.5;}
-.teacher-social{display:flex;justify-content:center;gap:10px;}
-.teacher-social a{width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,.08);color:var(--card-color,var(--primary-light));display:grid;place-items:center;text-decoration:none;transition:all .4s;font-size:.9rem;}
-.teacher-social a:hover{background:var(--card-accent,var(--gradient));color:#fff;transform:translateY(-4px) scale(1.08);box-shadow:0 10px 25px rgba(59,130,246,.35);}
-
-.teacher-card.director{grid-column:span 1;}
-.teacher-card.director .teacher-photo{height:260px;background:var(--gradient-gold);}
-.teacher-card.director .teacher-avatar{color:#f59e0b;width:150px;height:150px;font-size:3.6rem;}
-.teacher-card.director .teacher-subject-icon svg{width:36px;height:36px;}
-.teacher-card.director .teacher-info h3{font-size:1.3rem;}
+.teacher-subject-icon{position:absolute;top:22px;right:22px;width:60px;height:60px;border-radius:18px;background:rgba(255,255,255,.98);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.22);z-index:2;transition:transform .5s;}
+.teacher-subject-icon svg{width:36px;height:36px;}
+.teacher-card:hover .teacher-subject-icon{transform:rotate(12deg) scale(1.12);}
+.teacher-info{padding:32px 28px 30px;text-align:center;}
+.teacher-info h3{font-family:'Unbounded',sans-serif;font-size:1.12rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.3;letter-spacing:-.01em;}
+.teacher-role{display:inline-block;padding:6px 18px;border-radius:50px;background:rgba(59,130,246,.08);color:var(--card-color,var(--primary-light));font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.teacher-subjects{color:#64748b;font-size:.92rem;line-height:1.5;padding:0 8px;}
 
 .cta-section{padding:0 6% 140px;}
 .cta-block{max-width:1200px;margin:0 auto;background:var(--gradient);border-radius:48px;padding:100px 60px;text-align:center;position:relative;overflow:hidden;box-shadow:0 60px 140px rgba(10,31,68,.4);}
@@ -146,6 +156,7 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
 
 @media(max-width:1100px){
   .teachers-grid{gap:26px;}
+  .featured-info{padding:50px 40px;}
 }
 @media(max-width:968px){
   nav ul{display:none;}
@@ -154,6 +165,8 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
   .page-hero{padding:140px 6% 80px;min-height:60vh;}
   .section{padding:80px 6% 100px;}
   .page-hero-stats{gap:40px;}
+  .featured-teacher{grid-template-columns:1fr;}
+  .featured-photo{padding:60px 30px;}
 }
 @media(max-width:600px){
   .footer-grid{grid-template-columns:1fr;}
@@ -161,9 +174,10 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
   .page-hero-stats{gap:24px;}
   .page-hero-stat h3{font-size:1.8rem;}
   .teachers-grid{grid-template-columns:1fr;}
-  .teacher-photo{height:190px;}
-  .teacher-avatar{width:110px;height:110px;font-size:2.4rem;}
-  .teacher-card.director .teacher-avatar{width:130px;height:130px;font-size:3rem;}
+  .teacher-photo{height:200px;}
+  .teacher-avatar{width:115px;height:115px;font-size:2.6rem;}
+  .featured-avatar{width:160px;height:160px;font-size:4.5rem;}
+  .featured-info{padding:44px 28px;}
   .section-title{margin-bottom:50px;}
 }
 </style>
@@ -221,6 +235,30 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
 </section>
 
 <section class="section">
+
+  <div class="featured-teacher reveal">
+    <div class="featured-photo">
+      <div class="featured-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="14" width="48" height="34" rx="4" fill="#06b6d4" opacity="0.15" stroke="#06b6d4" stroke-width="3"/>
+          <path d="M14 22h10M14 30h14M14 38h8" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <path d="M34 38l4 4 10-10" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="30" y="20" width="18" height="14" rx="2" fill="#06b6d4" opacity="0.3"/>
+          <circle cx="39" cy="27" r="3" fill="#06b6d4"/>
+          <path d="M20 52h24M32 48v4" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="featured-avatar">М</div>
+    </div>
+    <div class="featured-info">
+      <div class="section-tag">Первый сотрудник</div>
+      <h2>Макаров Александр Владимирович</h2>
+      <div class="featured-role">Зам. директора • Учитель математики</div>
+      <p>Первый сотрудник школы, стоявший у истоков её создания. Опытный математик и талантливый администратор, который помог построить образовательную систему ЧОУ СОШ №151 имени Бехруза с самых первых дней.</p>
+      <div class="featured-quote">«Математика — это не просто цифры. Это язык, на котором говорит сама вселенная.»</div>
+    </div>
+  </div>
+
   <div class="section-title reveal">
     <div class="section-tag">Педагогический состав</div>
     <h2>Команда школы</h2>
@@ -229,12 +267,15 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
 
   <div class="teachers-grid">
 
-    <div class="teacher-card director reveal" style="--card-accent:var(--gradient-gold);--card-color:#f59e0b;">
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-gold);--card-color:#f59e0b;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6L8 18l24 12 24-12L32 6z" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M14 26v12c0 4 8 8 18 8s18-4 18-8V26" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M56 18v16" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="56" cy="38" r="3" fill="#f59e0b"/>
+            <path d="M32 46v8M26 54h12" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">А</div>
@@ -243,22 +284,17 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Ахмедов Бехруз Бахтиёрович угли</h3>
         <div class="teacher-role">Директор школы</div>
         <div class="teacher-subjects">Основатель и руководитель образовательного учреждения</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-telegram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 7h6M9 11h6" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8L10 20l22 12 22-12L32 8z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M16 24v10c0 4 7 7 16 7s16-3 16-7V24" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M32 41v10M24 51h16" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 20v12" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">А</div>
@@ -267,20 +303,18 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Антонян Размик Арсеньевич</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Русский язык и литература</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
-    <div class="teacher-card reveal" style="--card-accent:var(--gradient-ocean);--card-color:#06b6d4;">
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-indigo);--card-color:#6366f1;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 54h48" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
+            <path d="M12 54V22l20-12 20 12v32" stroke="#6366f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#6366f1" fill-opacity="0.1"/>
+            <path d="M24 54V40h16v14" stroke="#6366f1" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M22 28h6M36 28h6M22 36h6M36 36h6" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
+            <path d="M32 10v6" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">А</div>
@@ -289,20 +323,17 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Аршинов Иван Дмитриевич</h3>
         <div class="teacher-role">Зам. директора</div>
         <div class="teacher-subjects">История и обществознание</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#3b82f6;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="24" fill="#3b82f6" opacity="0.1" stroke="#3b82f6" stroke-width="3"/>
+            <ellipse cx="32" cy="32" rx="24" ry="10" stroke="#3b82f6" stroke-width="3"/>
+            <path d="M32 8c-6 6-10 14-10 24s4 18 10 24c6-6 10-14 10-24s-4-18-10-24z" stroke="#3b82f6" stroke-width="3"/>
+            <path d="M8 32h48" stroke="#3b82f6" stroke-width="3"/>
           </svg>
         </div>
         <div class="teacher-avatar">Б</div>
@@ -311,21 +342,19 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Бунин Павел Геннадьевич</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Английский язык, история и обществознание</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-pink);--card-color:#ec4899;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="12" r="10" stroke="#ec4899" stroke-width="2"/>
-            <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#ec4899" stroke-width="2" stroke-linecap="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="24" fill="#ec4899" opacity="0.1" stroke="#ec4899" stroke-width="3"/>
+            <ellipse cx="32" cy="32" rx="24" ry="10" stroke="#ec4899" stroke-width="3"/>
+            <path d="M32 8c-6 6-10 14-10 24s4 18 10 24c6-6 10-14 10-24s-4-18-10-24z" stroke="#ec4899" stroke-width="3"/>
+            <path d="M22 36c3 4 6 6 10 6s7-2 10-6" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="24" cy="28" r="2" fill="#ec4899"/>
+            <circle cx="40" cy="28" r="2" fill="#ec4899"/>
           </svg>
         </div>
         <div class="teacher-avatar">Б</div>
@@ -334,20 +363,16 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Бунина Кристина Владимировна</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Английский язык и экономика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-green);--card-color:#10b981;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22c4.97 0 9-4.03 9-9 0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 18a5 5 0 005-5c0-2.5-5-6.5-5-6.5S7 10.5 7 13a5 5 0 005 5z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 56c12 0 22-8 22-20 0-12-14-28-22-28S10 24 10 36c0 12 10 20 22 20z" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M32 46c6 0 12-4 12-10s-12-14-12-14-12 8-12 14 6 10 12 10z" stroke="#10b981" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M32 36v10" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">В</div>
@@ -356,20 +381,18 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Воронцова Янина Тимофеевна</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Биология и география</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-red);--card-color:#ef4444;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="2"/>
-            <path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10z" stroke="#ef4444" stroke-width="2"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="22" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="3"/>
+            <circle cx="32" cy="32" r="12" stroke="#ef4444" stroke-width="3"/>
+            <circle cx="32" cy="32" r="4" fill="#ef4444"/>
+            <path d="M32 10v8M32 46v8M10 32h8M46 32h8" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+            <path d="M42 22l4-4M18 46l4-4M42 42l4 4M18 18l4 4" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">Г</div>
@@ -378,21 +401,17 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Горшков Владимир Александрович</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Физическая культура</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#1e3a8a;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16v16H4z" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 8h8M8 12h8M8 16h5" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="18" cy="6" r="2" fill="#1e3a8a"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8h48v48H8z" fill="#1e3a8a" opacity="0.08" stroke="#1e3a8a" stroke-width="3" rx="4"/>
+            <path d="M20 22h24M20 30h24M20 38h16M20 46h12" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="46" cy="18" r="5" fill="#1e3a8a" opacity="0.4"/>
+            <text x="44" y="22" font-size="8" fill="#1e3a8a" font-weight="bold">√</text>
           </svg>
         </div>
         <div class="teacher-avatar">Е</div>
@@ -401,21 +420,19 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Егоров Алексей Никитич</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Математика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 3v6l-6 12h18L15 9V3" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 3h6" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="12" cy="15" r="2" fill="#8b5cf6"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8v16L10 52a4 4 0 004 4h36a4 4 0 004-4L40 24V8" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#8b5cf6" fill-opacity="0.1"/>
+            <path d="M24 8h16" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="28" cy="38" r="3" fill="#8b5cf6"/>
+            <circle cx="36" cy="44" r="2" fill="#8b5cf6"/>
+            <circle cx="32" cy="32" r="2" fill="#8b5cf6"/>
+            <path d="M20 52h24" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="teacher-avatar">К</div>
@@ -424,21 +441,16 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Кундас Даниил Николаевич</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Химия, русский язык и литература</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-ocean);--card-color:#06b6d4;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#06b6d4" opacity="0.3"/>
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="12" r="2" fill="#06b6d4"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8L10 20v16c0 12 10 18 22 22 12-4 22-10 22-22V20L32 8z" fill="#06b6d4" opacity="0.15" stroke="#06b6d4" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M32 20v24M22 32h20" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="4" fill="#06b6d4"/>
           </svg>
         </div>
         <div class="teacher-avatar">К</div>
@@ -447,45 +459,17 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Кутасова Анна Николаевна</h3>
         <div class="teacher-role">Зам. директора</div>
         <div class="teacher-subjects">ОБЗР, русский язык и литература, математика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#1e3a8a;">
-      <div class="teacher-photo">
-        <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16v16H4z" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 8h8M8 12h8M8 16h5" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
-            <path d="M17 2v4M15 4h4" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="teacher-avatar">М</div>
-      </div>
-      <div class="teacher-info">
-        <h3>Макаров Александр Владимирович</h3>
-        <div class="teacher-role">Зам. директора</div>
-        <div class="teacher-subjects">Математика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-gold);--card-color:#f59e0b;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19l7-7 3 3-7 7-3-3z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 2l7.586 7.586" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="11" cy="11" r="2" fill="#f59e0b"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 16L32 28L56 16" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M32 28v24" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 22v10c0 4 7 8 16 8s16-4 16-8V22" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="12" r="4" fill="#f59e0b"/>
           </svg>
         </div>
         <div class="teacher-avatar">Н</div>
@@ -494,19 +478,15 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Никонов Родион Иванович</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Труды и ИЗО</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-pink);--card-color:#ec4899;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2l3 6 6 .5-4.5 4 1.5 6L12 15l-6 3.5 1.5-6L3 8.5 9 8l3-6z" stroke="#ec4899" stroke-width="2" stroke-linejoin="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6l8 16 18 3-13 12 3 18-16-8-16 8 3-18L6 25l18-3 8-16z" fill="#ec4899" opacity="0.2" stroke="#ec4899" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M32 18l4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8z" fill="#ec4899"/>
           </svg>
         </div>
         <div class="teacher-avatar">С</div>
@@ -515,21 +495,18 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Солошенко Анна Александровна</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Труды</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
-    <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-indigo);--card-color:#6366f1;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="3" stroke="#8b5cf6" stroke-width="2"/>
-            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
-            <ellipse cx="12" cy="12" rx="9" ry="4" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="6" fill="#6366f1"/>
+            <ellipse cx="32" cy="32" rx="24" ry="10" stroke="#6366f1" stroke-width="3" fill="none"/>
+            <ellipse cx="32" cy="32" rx="24" ry="10" stroke="#6366f1" stroke-width="3" fill="none" transform="rotate(60 32 32)"/>
+            <ellipse cx="32" cy="32" rx="24" ry="10" stroke="#6366f1" stroke-width="3" fill="none" transform="rotate(-60 32 32)"/>
+            <circle cx="32" cy="32" r="2" fill="#fff"/>
           </svg>
         </div>
         <div class="teacher-avatar">Т</div>
@@ -538,21 +515,17 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Тычинин Никита Александрович</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Физика и математика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
     <div class="teacher-card reveal" style="--card-accent:var(--gradient-green);--card-color:#10b981;">
       <div class="teacher-photo">
         <div class="teacher-subject-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="4" width="20" height="14" rx="2" stroke="#10b981" stroke-width="2"/>
-            <path d="M8 20h8M12 18v2" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-            <path d="M7 9l2 2-2 2M12 13h4" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="12" width="48" height="36" rx="4" fill="#10b981" opacity="0.1" stroke="#10b981" stroke-width="3"/>
+            <path d="M8 42l12-12 8 8 12-14 16 18" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 52h20M32 48v4" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="44" cy="22" r="3" fill="#10b981"/>
           </svg>
         </div>
         <div class="teacher-avatar">Ю</div>
@@ -561,11 +534,6 @@ footer::after{content:'';position:absolute;width:600px;height:600px;background:r
         <h3>Юсупов Богдан Андреевич</h3>
         <div class="teacher-role">Учитель</div>
         <div class="teacher-subjects">Информатика</div>
-        <div class="teacher-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
       </div>
     </div>
 
