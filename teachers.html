@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наши учителя | ЧОУ СОШ №151 имени Бехруза</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Unbounded:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --primary:#0a1f44;
+  --primary-light:#1e3a8a;
+  --accent:#f59e0b;
+  --accent-2:#06b6d4;
+  --accent-3:#8b5cf6;
+  --accent-4:#10b981;
+  --accent-5:#ef4444;
+  --accent-6:#ec4899;
+  --dark:#050b1a;
+  --light:#f8fafc;
+  --gradient: linear-gradient(135deg,#0a1f44 0%,#1e3a8a 40%,#3b82f6 70%,#06b6d4 100%);
+  --gradient-gold: linear-gradient(135deg,#f59e0b,#fbbf24,#fcd34d);
+  --gradient-purple: linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);
+  --gradient-ocean: linear-gradient(135deg,#06b6d4,#22d3ee,#67e8f9);
+  --gradient-green: linear-gradient(135deg,#10b981,#34d399,#6ee7b7);
+  --gradient-red: linear-gradient(135deg,#ef4444,#f87171,#fca5a5);
+  --gradient-pink: linear-gradient(135deg,#ec4899,#f472b6,#f9a8d4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden;line-height:1.6;}
+
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#f8fafc 0%,#eff6ff 50%,#f8fafc 100%);}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.35;animation:float 25s ease-in-out infinite;}
+.blob.b1{width:600px;height:600px;background:radial-gradient(circle,#3b82f6,transparent 70%);top:-150px;left:-150px;}
+.blob.b2{width:500px;height:500px;background:radial-gradient(circle,#f59e0b,transparent 70%);top:35%;right:-200px;animation-delay:-8s;}
+.blob.b3{width:550px;height:550px;background:radial-gradient(circle,#06b6d4,transparent 70%);bottom:-150px;left:25%;animation-delay:-16s;}
+.blob.b4{width:400px;height:400px;background:radial-gradient(circle,#8b5cf6,transparent 70%);top:60%;left:-100px;animation-delay:-12s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(80px,-60px) scale(1.15);}50%{transform:translate(-50px,80px) scale(.9);}75%{transform:translate(60px,40px) scale(1.05);}}
+
+header{position:fixed;top:0;width:100%;z-index:1000;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.4,0,.2,1);background:transparent;}
+header.scrolled{background:rgba(255,255,255,.75);backdrop-filter:blur(24px) saturate(180%);padding:14px 6%;box-shadow:0 8px 40px rgba(10,31,68,.1);border-bottom:1px solid rgba(255,255,255,.5);}
+.logo{display:flex;align-items:center;gap:14px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;transition:color .4s;text-decoration:none;}
+header.scrolled .logo{color:var(--primary);}
+.logo-icon{width:54px;height:54px;border-radius:16px;background:var(--gradient-gold);display:grid;place-items:center;font-size:1.6rem;color:#fff;box-shadow:0 10px 30px rgba(245,158,11,.5);animation:pulse 3s ease-in-out infinite;position:relative;overflow:hidden;}
+.logo-icon::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);animation:shine 3s linear infinite;}
+@keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.logo-text small{display:block;font-family:'Manrope';font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.7;}
+
+nav ul{display:flex;gap:36px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:8px 0;transition:color .3s;}
+header.scrolled nav a{color:var(--dark);}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gradient-gold);transition:width .4s;border-radius:2px;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--accent);}
+nav a.active{color:var(--accent);}
+header.scrolled nav a.active{color:var(--accent);}
+nav a.active::after{width:100%;}
+
+.btn-login{padding:13px 30px;border-radius:50px;background:var(--gradient-gold);color:#fff;font-weight:700;text-decoration:none;font-size:.9rem;box-shadow:0 10px 30px rgba(245,158,11,.45);transition:all .4s;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden;}
+.btn-login::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);transform:translateX(-100%);transition:transform .6s;}
+.btn-login:hover::before{transform:translateX(100%);}
+.btn-login:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 40px rgba(245,158,11,.6);}
+.burger{display:none;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;}
+header.scrolled .burger{color:var(--dark);}
+
+.page-hero{min-height:70vh;position:relative;background:var(--gradient);display:flex;align-items:center;justify-content:center;padding:180px 6% 100px;overflow:hidden;text-align:center;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%, rgba(255,255,255,.15) 0%, transparent 40%),radial-gradient(circle at 80% 70%, rgba(245,158,11,.2) 0%, transparent 40%),radial-gradient(circle at 50% 50%, rgba(139,92,246,.15) 0%, transparent 50%);}
+.page-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at center, black 30%, transparent 70%);}
+.page-hero-content{position:relative;z-index:2;max-width:1000px;}
+.page-hero .breadcrumb{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;border-radius:50px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:600;margin-bottom:32px;animation:fadeUp .8s ease both;}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.8);text-decoration:none;transition:color .3s;}
+.page-hero .breadcrumb a:hover{color:var(--accent);}
+.page-hero .breadcrumb i{font-size:.7rem;opacity:.6;}
+.page-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:24px;animation:fadeUp .8s ease .1s both;letter-spacing:-.02em;}
+.page-hero h1 .accent{background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero p{color:rgba(255,255,255,.85);font-size:1.15rem;max-width:680px;margin:0 auto 40px;animation:fadeUp .8s ease .2s both;}
+.page-hero-stats{display:flex;justify-content:center;gap:60px;margin-top:20px;animation:fadeUp .8s ease .3s both;flex-wrap:wrap;}
+.page-hero-stat h3{font-family:'Unbounded',sans-serif;font-size:2.4rem;font-weight:900;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.page-hero-stat p{font-size:.8rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-top:8px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+.section{padding:100px 6% 140px;position:relative;}
+.section-title{text-align:center;max-width:800px;margin:0 auto 80px;}
+.section-tag{display:inline-block;padding:10px 24px;border-radius:50px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(6,182,212,.12));color:var(--primary-light);font-size:.8rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;border:1px solid rgba(59,130,246,.15);}
+.section-title h2{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--primary);margin-bottom:20px;letter-spacing:-.02em;line-height:1.15;}
+.section-title p{color:#64748b;font-size:1.1rem;}
+
+.teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:1400px;margin:0 auto;}
+.teacher-card{background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 10px 50px rgba(10,31,68,.08);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;border:1px solid rgba(59,130,246,.08);}
+.teacher-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--card-accent,var(--gradient));transform:scaleX(0);transform-origin:left;transition:transform .5s;z-index:3;}
+.teacher-card:hover{transform:translateY(-14px);box-shadow:0 40px 90px rgba(10,31,68,.15);border-color:rgba(59,130,246,.2);}
+.teacher-card:hover::before{transform:scaleX(1);}
+.teacher-photo{position:relative;height:220px;background:var(--card-accent,var(--gradient));display:grid;place-items:center;overflow:hidden;}
+.teacher-photo::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);top:-100px;right:-100px;border-radius:50%;}
+.teacher-photo::after{content:'';position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(0,0,0,.1),transparent 70%);bottom:-100px;left:-100px;border-radius:50%;}
+.teacher-avatar{width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:3rem;font-weight:900;color:var(--card-color,var(--primary));box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;z-index:2;transition:transform .5s;border:4px solid rgba(255,255,255,.6);}
+.teacher-card:hover .teacher-avatar{transform:scale(1.1) rotate(-5deg);}
+.teacher-subject-icon{position:absolute;top:20px;right:20px;width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:2;transition:transform .5s;}
+.teacher-subject-icon svg{width:32px;height:32px;}
+.teacher-card:hover .teacher-subject-icon{transform:rotate(12deg) scale(1.1);}
+.teacher-info{padding:32px 28px 28px;text-align:center;}
+.teacher-info h3{font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;color:var(--primary);margin-bottom:8px;line-height:1.3;letter-spacing:-.01em;}
+.teacher-role{display:inline-block;padding:6px 16px;border-radius:50px;background:rgba(59,130,246,.08);color:var(--card-color,var(--primary-light));font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.teacher-subjects{color:#64748b;font-size:.9rem;margin-bottom:20px;line-height:1.5;}
+.teacher-social{display:flex;justify-content:center;gap:10px;}
+.teacher-social a{width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,.08);color:var(--card-color,var(--primary-light));display:grid;place-items:center;text-decoration:none;transition:all .4s;font-size:.9rem;}
+.teacher-social a:hover{background:var(--card-accent,var(--gradient));color:#fff;transform:translateY(-4px) scale(1.08);box-shadow:0 10px 25px rgba(59,130,246,.35);}
+
+.teacher-card.director{grid-column:span 1;}
+.teacher-card.director .teacher-photo{height:260px;background:var(--gradient-gold);}
+.teacher-card.director .teacher-avatar{color:#f59e0b;width:150px;height:150px;font-size:3.6rem;}
+.teacher-card.director .teacher-subject-icon svg{width:36px;height:36px;}
+.teacher-card.director .teacher-info h3{font-size:1.3rem;}
+
+.cta-section{padding:0 6% 140px;}
+.cta-block{max-width:1200px;margin:0 auto;background:var(--gradient);border-radius:48px;padding:100px 60px;text-align:center;position:relative;overflow:hidden;box-shadow:0 60px 140px rgba(10,31,68,.4);}
+.cta-block::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.5),transparent 70%);top:-250px;right:-150px;border-radius:50%;}
+.cta-block::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,.5),transparent 70%);bottom:-200px;left:-120px;border-radius:50%;}
+.cta-block h2{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin-bottom:24px;position:relative;z-index:1;letter-spacing:-.02em;}
+.cta-block p{color:rgba(255,255,255,.9);font-size:1.15rem;margin-bottom:44px;position:relative;z-index:1;max-width:620px;margin-left:auto;margin-right:auto;}
+.cta-block .btn{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;padding:18px 38px;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .4s;background:var(--gradient-gold);color:#fff;box-shadow:0 14px 40px rgba(245,158,11,.5);border:none;cursor:pointer;overflow:hidden;}
+.cta-block .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.6) 50%,transparent 60%);transform:translateX(-100%);transition:transform .6s;}
+.cta-block .btn:hover::before{transform:translateX(100%);}
+.cta-block .btn:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 22px 55px rgba(245,158,11,.7);}
+
+footer{background:var(--dark);color:#94a3b8;padding:100px 6% 40px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.3),transparent);}
+footer::after{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%);top:-300px;right:-200px;border-radius:50%;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px;max-width:1400px;margin:0 auto 70px;position:relative;z-index:1;}
+.footer-col h4{color:#fff;font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:28px;}
+.footer-col p{font-size:.95rem;line-height:1.8;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:14px;}
+.footer-col ul a{color:#94a3b8;text-decoration:none;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;}
+.footer-col ul a:hover{color:var(--accent);transform:translateX(6px);}
+.footer-social{display:flex;gap:14px;margin-top:24px;}
+.footer-social a{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.05);color:#fff;display:grid;place-items:center;text-decoration:none;transition:all .4s;font-size:1rem;border:1px solid rgba(255,255,255,.08);}
+.footer-social a:hover{background:var(--gradient-gold);transform:translateY(-6px) scale(1.08);box-shadow:0 14px 35px rgba(245,158,11,.5);border-color:transparent;}
+.footer-bottom{max-width:1400px;margin:0 auto;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem;position:relative;z-index:1;}
+
+.reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.4,0,.2,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+@media(max-width:1100px){
+  .teachers-grid{gap:26px;}
+}
+@media(max-width:968px){
+  nav ul{display:none;}
+  .burger{display:block;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .page-hero{padding:140px 6% 80px;min-height:60vh;}
+  .section{padding:80px 6% 100px;}
+  .page-hero-stats{gap:40px;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+  .cta-block{padding:70px 30px;}
+  .page-hero-stats{gap:24px;}
+  .page-hero-stat h3{font-size:1.8rem;}
+  .teachers-grid{grid-template-columns:1fr;}
+  .teacher-photo{height:190px;}
+  .teacher-avatar{width:110px;height:110px;font-size:2.4rem;}
+  .teacher-card.director .teacher-avatar{width:130px;height:130px;font-size:3rem;}
+  .section-title{margin-bottom:50px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+
+<header id="header">
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="logo-text">СОШ №151<small>имени Бехруза</small></div>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">О школе</a></li>
+      <li><a href="#" class="active">Учителя</a></li>
+      <li><a href="#">Контакты</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="btn-login"><i class="fas fa-user-circle"></i> Личный кабинет</a>
+  <button class="burger"><i class="fas fa-bars"></i></button>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="#">Главная</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>Наши учителя</span>
+    </div>
+    <h1>Наши <span class="accent">педагоги</span></h1>
+    <p>Команда профессионалов, влюблённых в своё дело. Каждый учитель — это наставник, друг и проводник в мир знаний.</p>
+    <div class="page-hero-stats">
+      <div class="page-hero-stat">
+        <h3>16</h3>
+        <p>Педагогов</p>
+      </div>
+      <div class="page-hero-stat">
+        <h3>20+</h3>
+        <p>Предметов</p>
+      </div>
+      <div class="page-hero-stat">
+        <h3>15+</h3>
+        <p>Лет опыта</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title reveal">
+    <div class="section-tag">Педагогический состав</div>
+    <h2>Команда школы</h2>
+    <p>Люди, которые каждый день вдохновляют учеников на новые достижения</p>
+  </div>
+
+  <div class="teachers-grid">
+
+    <div class="teacher-card director reveal" style="--card-accent:var(--gradient-gold);--card-color:#f59e0b;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">А</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Ахмедов Бехруз Бахтиёрович угли</h3>
+        <div class="teacher-role">Директор школы</div>
+        <div class="teacher-subjects">Основатель и руководитель образовательного учреждения</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 7h6M9 11h6" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">А</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Антонян Размик Арсеньевич</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Русский язык и литература</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-ocean);--card-color:#06b6d4;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">А</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Аршинов Иван Дмитриевич</h3>
+        <div class="teacher-role">Зам. директора</div>
+        <div class="teacher-subjects">История и обществознание</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#3b82f6;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Б</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Бунин Павел Геннадьевич</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Английский язык, история и обществознание</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-pink);--card-color:#ec4899;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="10" stroke="#ec4899" stroke-width="2"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#ec4899" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Б</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Бунина Кристина Владимировна</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Английский язык и экономика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-green);--card-color:#10b981;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22c4.97 0 9-4.03 9-9 0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 18a5 5 0 005-5c0-2.5-5-6.5-5-6.5S7 10.5 7 13a5 5 0 005 5z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">В</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Воронцова Янина Тимофеевна</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Биология и география</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-red);--card-color:#ef4444;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="2"/>
+            <path d="M2 12h20M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10z" stroke="#ef4444" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Г</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Горшков Владимир Александрович</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Физическая культура</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#1e3a8a;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16v16H4z" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 8h8M8 12h8M8 16h5" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="18" cy="6" r="2" fill="#1e3a8a"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Е</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Егоров Алексей Никитич</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Математика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 3v6l-6 12h18L15 9V3" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 3h6" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="15" r="2" fill="#8b5cf6"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">К</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Кундас Даниил Николаевич</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Химия, русский язык и литература</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-ocean);--card-color:#06b6d4;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#06b6d4" opacity="0.3"/>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="2" fill="#06b6d4"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">К</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Кутасова Анна Николаевна</h3>
+        <div class="teacher-role">Зам. директора</div>
+        <div class="teacher-subjects">ОБЗР, русский язык и литература, математика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient);--card-color:#1e3a8a;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16v16H4z" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 8h8M8 12h8M8 16h5" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17 2v4M15 4h4" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">М</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Макаров Александр Владимирович</h3>
+        <div class="teacher-role">Зам. директора</div>
+        <div class="teacher-subjects">Математика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-gold);--card-color:#f59e0b;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19l7-7 3 3-7 7-3-3z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 2l7.586 7.586" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="11" cy="11" r="2" fill="#f59e0b"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Н</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Никонов Родион Иванович</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Труды и ИЗО</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-pink);--card-color:#ec4899;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l3 6 6 .5-4.5 4 1.5 6L12 15l-6 3.5 1.5-6L3 8.5 9 8l3-6z" stroke="#ec4899" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">С</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Солошенко Анна Александровна</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Труды</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-purple);--card-color:#8b5cf6;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" stroke="#8b5cf6" stroke-width="2"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="12" cy="12" rx="9" ry="4" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Т</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Тычинин Никита Александрович</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Физика и математика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-card reveal" style="--card-accent:var(--gradient-green);--card-color:#10b981;">
+      <div class="teacher-photo">
+        <div class="teacher-subject-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="14" rx="2" stroke="#10b981" stroke-width="2"/>
+            <path d="M8 20h8M12 18v2" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 9l2 2-2 2M12 13h4" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="teacher-avatar">Ю</div>
+      </div>
+      <div class="teacher-info">
+        <h3>Юсупов Богдан Андреевич</h3>
+        <div class="teacher-role">Учитель</div>
+        <div class="teacher-subjects">Информатика</div>
+        <div class="teacher-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-block reveal">
+    <h2>Хотите учиться у лучших?</h2>
+    <p>Присоединяйтесь к ЧОУ СОШ №151 имени Бехруза и откройте дверь в мир знаний вместе с нашей командой педагогов</p>
+    <a href="#" class="btn"><i class="fas fa-rocket"></i> Подать заявку</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>ЧОУ СОШ №151</h4>
+      <p>Онлайн-школа имени Бехруза — современное образовательное пространство для всестороннего развития детей.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Главная</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> О школе</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Учителя</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Обучение</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Начальные классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Средние классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Старшие классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Онлайн-курсы</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i> г. Ташкент, ул. Школьная 151</a></li>
+        <li><a href="tel:+998901234567"><i class="fas fa-phone"></i> +998 90 123-45-67</a></li>
+        <li><a href="mailto:info@school151.uz"><i class="fas fa-envelope"></i> info@school151.uz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ЧОУ СОШ №151 имени Бехруза. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('active'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
