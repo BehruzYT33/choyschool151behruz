@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О школе | ЧОУ СОШ №151 имени Бехруза</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Unbounded:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --primary:#0a1f44;
+  --primary-light:#1e3a8a;
+  --accent:#f59e0b;
+  --accent-2:#06b6d4;
+  --accent-3:#8b5cf6;
+  --accent-4:#10b981;
+  --dark:#050b1a;
+  --light:#f8fafc;
+  --gradient: linear-gradient(135deg,#0a1f44 0%,#1e3a8a 40%,#3b82f6 70%,#06b6d4 100%);
+  --gradient-gold: linear-gradient(135deg,#f59e0b,#fbbf24,#fcd34d);
+  --gradient-purple: linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);
+  --gradient-ocean: linear-gradient(135deg,#06b6d4,#22d3ee,#67e8f9);
+  --gradient-green: linear-gradient(135deg,#10b981,#34d399,#6ee7b7);
+  --gradient-memorial: linear-gradient(135deg,#1f2937,#374151,#4b5563);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden;line-height:1.6;}
+
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#f8fafc 0%,#eff6ff 50%,#f8fafc 100%);}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.35;animation:float 25s ease-in-out infinite;}
+.blob.b1{width:600px;height:600px;background:radial-gradient(circle,#3b82f6,transparent 70%);top:-150px;left:-150px;}
+.blob.b2{width:500px;height:500px;background:radial-gradient(circle,#f59e0b,transparent 70%);top:35%;right:-200px;animation-delay:-8s;}
+.blob.b3{width:550px;height:550px;background:radial-gradient(circle,#06b6d4,transparent 70%);bottom:-150px;left:25%;animation-delay:-16s;}
+.blob.b4{width:400px;height:400px;background:radial-gradient(circle,#8b5cf6,transparent 70%);top:60%;left:-100px;animation-delay:-12s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(80px,-60px) scale(1.15);}50%{transform:translate(-50px,80px) scale(.9);}75%{transform:translate(60px,40px) scale(1.05);}}
+
+header{position:fixed;top:0;width:100%;z-index:1000;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.4,0,.2,1);background:transparent;}
+header.scrolled{background:rgba(255,255,255,.75);backdrop-filter:blur(24px) saturate(180%);padding:14px 6%;box-shadow:0 8px 40px rgba(10,31,68,.1);border-bottom:1px solid rgba(255,255,255,.5);}
+.logo{display:flex;align-items:center;gap:14px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;transition:color .4s;text-decoration:none;}
+header.scrolled .logo{color:var(--primary);}
+.logo-icon{width:54px;height:54px;border-radius:16px;background:var(--gradient-gold);display:grid;place-items:center;font-size:1.6rem;color:#fff;box-shadow:0 10px 30px rgba(245,158,11,.5);animation:pulse 3s ease-in-out infinite;position:relative;overflow:hidden;}
+.logo-icon::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);animation:shine 3s linear infinite;}
+@keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.logo-text small{display:block;font-family:'Manrope';font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.7;}
+
+nav ul{display:flex;gap:36px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:8px 0;transition:color .3s;}
+header.scrolled nav a{color:var(--dark);}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gradient-gold);transition:width .4s;border-radius:2px;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--accent);}
+nav a.active{color:var(--accent);}
+header.scrolled nav a.active{color:var(--accent);}
+nav a.active::after{width:100%;}
+
+.btn-login{padding:13px 30px;border-radius:50px;background:var(--gradient-gold);color:#fff;font-weight:700;text-decoration:none;font-size:.9rem;box-shadow:0 10px 30px rgba(245,158,11,.45);transition:all .4s;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden;}
+.btn-login::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);transform:translateX(-100%);transition:transform .6s;}
+.btn-login:hover::before{transform:translateX(100%);}
+.btn-login:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 40px rgba(245,158,11,.6);}
+.burger{display:none;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;}
+header.scrolled .burger{color:var(--dark);}
+
+.page-hero{min-height:75vh;position:relative;background:var(--gradient);display:flex;align-items:center;justify-content:center;padding:180px 6% 100px;overflow:hidden;text-align:center;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%, rgba(255,255,255,.15) 0%, transparent 40%),radial-gradient(circle at 80% 70%, rgba(245,158,11,.2) 0%, transparent 40%),radial-gradient(circle at 50% 50%, rgba(139,92,246,.15) 0%, transparent 50%);}
+.page-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at center, black 30%, transparent 70%);}
+.page-hero-content{position:relative;z-index:2;max-width:1000px;}
+.page-hero .breadcrumb{display:inline-flex;align-items:center;gap:12px;padding:10px 24px;border-radius:50px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:600;margin-bottom:32px;animation:fadeUp .8s ease both;}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.8);text-decoration:none;transition:color .3s;}
+.page-hero .breadcrumb a:hover{color:var(--accent);}
+.page-hero .breadcrumb i{font-size:.7rem;opacity:.6;}
+.page-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:24px;animation:fadeUp .8s ease .1s both;letter-spacing:-.02em;}
+.page-hero h1 .accent{background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero p{color:rgba(255,255,255,.85);font-size:1.15rem;max-width:720px;margin:0 auto 40px;animation:fadeUp .8s ease .2s both;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+.section{padding:100px 6% 120px;position:relative;}
+.section-title{text-align:center;max-width:800px;margin:0 auto 70px;}
+.section-tag{display:inline-block;padding:10px 24px;border-radius:50px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(6,182,212,.12));color:var(--primary-light);font-size:.8rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;border:1px solid rgba(59,130,246,.15);}
+.section-title h2{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--primary);margin-bottom:20px;letter-spacing:-.02em;line-height:1.15;}
+.section-title p{color:#64748b;font-size:1.1rem;}
+
+.idschool-hero{max-width:1200px;margin:0 auto;background:var(--gradient);border-radius:48px;padding:80px 60px;position:relative;overflow:hidden;box-shadow:0 60px 140px rgba(10,31,68,.35);}
+.idschool-hero::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.4),transparent 70%);top:-250px;right:-150px;border-radius:50%;}
+.idschool-hero::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,.4),transparent 70%);bottom:-200px;left:-120px;border-radius:50%;}
+.idschool-hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;}
+.idschool-text .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;border-radius:50px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;font-weight:700;margin-bottom:24px;}
+.idschool-text .badge i{color:var(--accent);}
+.idschool-text h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:24px;letter-spacing:-.02em;}
+.idschool-text h2 .accent{background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.idschool-text p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:28px;line-height:1.7;}
+.idschool-text .id-badge{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:20px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.1rem;}
+.idschool-text .id-badge i{color:var(--accent);font-size:1.5rem;}
+
+.counter-box{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);border-radius:32px;padding:44px 36px;text-align:center;position:relative;overflow:hidden;}
+.counter-box::before{content:'';position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(245,158,11,.3),transparent 70%);top:-100px;right:-100px;border-radius:50%;}
+.counter-label{color:rgba(255,255,255,.75);font-size:.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1;}
+.counter-value{font-family:'Unbounded',sans-serif;font-size:clamp(3rem,6vw,4.5rem);font-weight:900;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;position:relative;z-index:1;margin-bottom:12px;}
+.counter-desc{color:rgba(255,255,255,.85);font-size:.95rem;position:relative;z-index:1;font-weight:600;}
+.counter-unit{color:var(--accent);font-weight:800;}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1200px;margin:80px auto 0;}
+.stat-card{background:#fff;padding:36px 28px;border-radius:24px;box-shadow:0 10px 50px rgba(10,31,68,.08);text-align:center;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;border:1px solid rgba(59,130,246,.08);}
+.stat-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--stat-accent,var(--gradient));transform:scaleX(0);transform-origin:left;transition:transform .5s;}
+.stat-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(10,31,68,.15);}
+.stat-card:hover::before{transform:scaleX(1);}
+.stat-icon{width:64px;height:64px;border-radius:18px;background:var(--stat-accent,var(--gradient));display:grid;place-items:center;margin:0 auto 20px;color:#fff;font-size:1.6rem;box-shadow:0 12px 30px rgba(59,130,246,.3);transition:transform .5s;}
+.stat-card:hover .stat-icon{transform:rotate(-8deg) scale(1.1);}
+.stat-card h3{font-family:'Unbounded',sans-serif;font-size:2rem;font-weight:900;color:var(--primary);margin-bottom:8px;line-height:1;}
+.stat-card p{color:#64748b;font-size:.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+
+.developers-section{padding:0 6% 120px;position:relative;}
+.developers-title{text-align:center;max-width:800px;margin:0 auto 60px;}
+.developers-title .section-tag{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(167,139,250,.12));color:#7c3aed;border-color:rgba(139,92,246,.2);}
+.developers-title h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--primary);margin-bottom:16px;letter-spacing:-.02em;}
+.developers-title p{color:#64748b;font-size:1.05rem;}
+
+.developers-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1100px;margin:0 auto;}
+.developer-card{background:#fff;border-radius:32px;overflow:hidden;box-shadow:0 20px 70px rgba(10,31,68,.12);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;border:1px solid rgba(59,130,246,.08);}
+.developer-card:hover{transform:translateY(-10px);box-shadow:0 40px 100px rgba(10,31,68,.2);}
+.developer-header{position:relative;padding:50px 40px 30px;background:var(--dev-accent,var(--gradient));text-align:center;overflow:hidden;}
+.developer-header::before{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);top:-120px;right:-120px;border-radius:50%;}
+.developer-header::after{content:'';position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(0,0,0,.12),transparent 70%);bottom:-100px;left:-100px;border-radius:50%;}
+.developer-avatar{width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.98);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:3.4rem;font-weight:900;color:var(--dev-color,var(--primary));box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;z-index:2;margin:0 auto;transition:transform .5s;border:4px solid rgba(255,255,255,.7);}
+.developer-card:hover .developer-avatar{transform:scale(1.08) rotate(-5deg);}
+.developer-avatar::after{content:'';position:absolute;inset:-10px;border-radius:50%;border:3px dashed rgba(255,255,255,.5);animation:spin 20s linear infinite;}
+.developer-role-icon{position:absolute;top:24px;right:24px;width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.98);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.22);z-index:2;}
+.developer-role-icon svg{width:32px;height:32px;}
+.developer-info{padding:36px 40px 40px;text-align:center;}
+.developer-info h3{font-family:'Unbounded',sans-serif;font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.3;letter-spacing:-.01em;}
+.developer-role{display:inline-block;padding:8px 20px;border-radius:50px;background:rgba(59,130,246,.08);color:var(--dev-color,var(--primary-light));font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;}
+.developer-desc{color:#64748b;font-size:.95rem;line-height:1.7;}
+
+.developer-card.memorial{position:relative;}
+.developer-card.memorial .developer-header{background:var(--gradient-memorial);filter:saturate(.5);}
+.developer-card.memorial .developer-avatar{color:#4b5563;filter:grayscale(.3);}
+.developer-card.memorial .developer-role{background:rgba(107,114,128,.1);color:#6b7280;}
+.memorial-ribbon{position:absolute;top:20px;left:20px;padding:8px 16px;border-radius:50px;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;z-index:3;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.15);}
+.memorial-ribbon i{color:#fbbf24;}
+.memorial-candle{position:absolute;bottom:20px;right:20px;font-size:1.5rem;z-index:3;filter:drop-shadow(0 0 12px rgba(251,191,36,.8));animation:flicker 2s ease-in-out infinite;}
+@keyframes flicker{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.85;transform:scale(.95);}}
+
+.quote-section{padding:0 6% 120px;}
+.quote-block{max-width:1100px;margin:0 auto;padding:80px 60px;background:var(--gradient);border-radius:40px;position:relative;overflow:hidden;text-align:center;box-shadow:0 50px 120px rgba(30,58,138,.35);}
+.quote-block::before{content:'\201C';position:absolute;top:-60px;left:60px;font-family:'Playfair Display',serif;font-size:16rem;color:rgba(255,255,255,.08);line-height:1;}
+.quote-block::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,.3),transparent 70%);top:-150px;right:-100px;border-radius:50%;}
+.quote-block p{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);color:#fff;font-style:italic;margin-bottom:30px;position:relative;z-index:1;line-height:1.4;}
+.quote-block span{color:var(--accent);font-weight:800;font-size:1rem;letter-spacing:3px;text-transform:uppercase;position:relative;z-index:1;display:inline-block;}
+
+.cta-section{padding:0 6% 140px;}
+.cta-block{max-width:1200px;margin:0 auto;background:var(--gradient);border-radius:48px;padding:100px 60px;text-align:center;position:relative;overflow:hidden;box-shadow:0 60px 140px rgba(10,31,68,.4);}
+.cta-block::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.5),transparent 70%);top:-250px;right:-150px;border-radius:50%;}
+.cta-block::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,.5),transparent 70%);bottom:-200px;left:-120px;border-radius:50%;}
+.cta-block h2{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin-bottom:24px;position:relative;z-index:1;letter-spacing:-.02em;}
+.cta-block p{color:rgba(255,255,255,.9);font-size:1.15rem;margin-bottom:44px;position:relative;z-index:1;max-width:620px;margin-left:auto;margin-right:auto;}
+.cta-block .btn{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;padding:18px 38px;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .4s;background:var(--gradient-gold);color:#fff;box-shadow:0 14px 40px rgba(245,158,11,.5);border:none;cursor:pointer;overflow:hidden;}
+.cta-block .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.6) 50%,transparent 60%);transform:translateX(-100%);transition:transform .6s;}
+.cta-block .btn:hover::before{transform:translateX(100%);}
+.cta-block .btn:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 22px 55px rgba(245,158,11,.7);}
+
+footer{background:var(--dark);color:#94a3b8;padding:100px 6% 40px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.3),transparent);}
+footer::after{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%);top:-300px;right:-200px;border-radius:50%;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px;max-width:1400px;margin:0 auto 70px;position:relative;z-index:1;}
+.footer-col h4{color:#fff;font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:28px;}
+.footer-col p{font-size:.95rem;line-height:1.8;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:14px;}
+.footer-col ul a{color:#94a3b8;text-decoration:none;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;}
+.footer-col ul a:hover{color:var(--accent);transform:translateX(6px);}
+.footer-social{display:flex;gap:14px;margin-top:24px;}
+.footer-social a{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.05);color:#fff;display:grid;place-items:center;text-decoration:none;transition:all .4s;font-size:1rem;border:1px solid rgba(255,255,255,.08);}
+.footer-social a:hover{background:var(--gradient-gold);transform:translateY(-6px) scale(1.08);box-shadow:0 14px 35px rgba(245,158,11,.5);border-color:transparent;}
+.footer-bottom{max-width:1400px;margin:0 auto;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem;position:relative;z-index:1;}
+
+.reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.4,0,.2,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+@media(max-width:1100px){
+  .idschool-hero-content{grid-template-columns:1fr;gap:50px;}
+}
+@media(max-width:968px){
+  nav ul{display:none;}
+  .burger{display:block;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .page-hero{padding:140px 6% 80px;min-height:65vh;}
+  .section{padding:80px 6% 100px;}
+  .developers-grid{grid-template-columns:1fr;}
+  .idschool-hero{padding:60px 40px;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+  .cta-block{padding:70px 30px;}
+  .section-title{margin-bottom:50px;}
+  .quote-block{padding:50px 28px;}
+  .idschool-hero{padding:50px 28px;border-radius:32px;}
+  .counter-box{padding:36px 24px;}
+  .developer-info{padding:30px 28px;}
+  .developer-avatar{width:110px;height:110px;font-size:2.8rem;}
+  .stats-grid{gap:16px;margin-top:50px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+
+<header id="header">
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="logo-text">СОШ №151<small>имени Бехруза</small></div>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#" class="active">О школе</a></li>
+      <li><a href="#">Учителя</a></li>
+      <li><a href="#">Контакты</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="btn-login"><i class="fas fa-user-circle"></i> Личный кабинет</a>
+  <button class="burger"><i class="fas fa-bars"></i></button>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="#">Главная</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>О школе</span>
+    </div>
+    <h1>О нашей <span class="accent">школе</span></h1>
+    <p>ЧОУ СОШ №151 имени Бехруза — современное образовательное пространство, где традиции встречаются с инновациями, а каждый ученик находит свой путь к успеху.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="idschool-hero reveal">
+    <div class="idschool-hero-content">
+      <div class="idschool-text">
+        <div class="badge"><i class="fas fa-certificate"></i> Электронная система образования</div>
+        <h2>Мы работаем на платформе <span class="accent">IDSCHOOL</span></h2>
+        <p>С 29 декабря 2025 года наша школа официально использует современную электронную систему IDSCHOOL — инновационную платформу для управления образовательным процессом, которая объединяет учеников, учителей и родителей в едином цифровом пространстве.</p>
+        <div class="id-badge">
+          <i class="fas fa-id-card"></i>
+          IDSCHOOL • с 29.12.2025
+        </div>
+      </div>
+      <div class="counter-box">
+        <div class="counter-label">Работаем с платформой</div>
+        <div class="counter-value" id="counter-value">0</div>
+        <div class="counter-desc">
+          <span class="counter-unit" id="counter-unit">дней</span> вместе с IDSCHOOL
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-grid reveal">
+    <div class="stat-card" style="--stat-accent:var(--gradient);">
+      <div class="stat-icon"><i class="fas fa-users"></i></div>
+      <h3>1500+</h3>
+      <p>Учеников</p>
+    </div>
+    <div class="stat-card" style="--stat-accent:var(--gradient-gold);">
+      <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>85+</h3>
+      <p>Учителей</p>
+    </div>
+    <div class="stat-card" style="--stat-accent:var(--gradient-ocean);">
+      <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+      <h3>30+</h3>
+      <p>Предметов</p>
+    </div>
+    <div class="stat-card" style="--stat-accent:var(--gradient-green);">
+      <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+      <h3>98%</h3>
+      <p>Поступление</p>
+    </div>
+  </div>
+</section>
+
+<section class="developers-section">
+  <div class="developers-title reveal">
+    <div class="section-tag">Создатели платформы</div>
+    <h2>Разработчики IDSCHOOL</h2>
+    <p>Люди, благодаря которым наша школа шагнула в цифровое будущее</p>
+  </div>
+
+  <div class="developers-grid">
+
+    <div class="developer-card reveal" style="--dev-accent:var(--gradient);--dev-color:#1e3a8a;">
+      <div class="developer-header">
+        <div class="developer-role-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="#1e3a8a" opacity="0.15" stroke="#1e3a8a" stroke-width="3"/>
+            <path d="M16 22h32M16 32h24M16 42h18" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="44" r="6" fill="#f59e0b"/>
+            <path d="M45 44l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="developer-avatar">А</div>
+      </div>
+      <div class="developer-info">
+        <h3>AHMEDOV BEHRUZ BAXTIYORIVICH O'G'LI</h3>
+        <div class="developer-role">Разработчик платформы</div>
+        <div class="developer-desc">Идейный вдохновитель и главный разработчик электронной системы IDSCHOOL. Под его руководством платформа стала надёжным инструментом для всей школы.</div>
+      </div>
+    </div>
+
+    <div class="developer-card memorial reveal" style="--dev-accent:var(--gradient-memorial);--dev-color:#4b5563;">
+      <div class="memorial-ribbon"><i class="fas fa-dove"></i> Вечная память</div>
+      <div class="memorial-candle">🕯️</div>
+      <div class="developer-header">
+        <div class="developer-role-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="#6b7280" opacity="0.15" stroke="#6b7280" stroke-width="3"/>
+            <path d="M16 22h32M16 32h24M16 42h18" stroke="#6b7280" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="44" r="6" fill="#6b7280"/>
+            <path d="M45 44l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="developer-avatar">В</div>
+      </div>
+      <div class="developer-info">
+        <h3>VOLKOV DANIL</h3>
+        <div class="developer-role">Разработчик платформы</div>
+        <div class="developer-desc">Талантливый разработчик, внёсший неоценимый вклад в создание и развитие IDSCHOOL. Его труд и преданность делу навсегда останутся в истории нашей школы. Светлая память.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-block reveal">
+    <p>Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир.</p>
+    <span>— Нельсон Мандела</span>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-block reveal">
+    <h2>Присоединяйтесь к нам</h2>
+    <p>Станьте частью современного образовательного пространства ЧОУ СОШ №151 имени Бехруза</p>
+    <a href="#" class="btn"><i class="fas fa-rocket"></i> Подать заявку</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>ЧОУ СОШ №151</h4>
+      <p>Онлайн-школа имени Бехруза — современное образовательное пространство для всестороннего развития детей.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Главная</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> О школе</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Учителя</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Обучение</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Начальные классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Средние классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Старшие классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Онлайн-курсы</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i> г. Ташкент, ул. Школьная 151</a></li>
+        <li><a href="tel:+998901234567"><i class="fas fa-phone"></i> +998 90 123-45-67</a></li>
+        <li><a href="mailto:info@school151.uz"><i class="fas fa-envelope"></i> info@school151.uz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ЧОУ СОШ №151 имени Бехруза. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('active'), i * 100);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+const startDate = new Date('2025-12-29T00:00:00');
+const counterValue = document.getElementById('counter-value');
+const counterUnit = document.getElementById('counter-unit');
+
+function updateCounter(){
+  const now = new Date();
+  const diffMs = now - startDate;
+
+  if (diffMs < 0) {
+    const futureMs = startDate - now;
+    const days = Math.floor(futureMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((futureMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((futureMs % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((futureMs % (1000 * 60)) / 1000);
+    if (days > 0) {
+      counterValue.textContent = days;
+      counterUnit.textContent = 'дней до запуска';
+    } else if (hours > 0) {
+      counterValue.textContent = hours;
+      counterUnit.textContent = 'часов до запуска';
+    } else if (minutes > 0) {
+      counterValue.textContent = minutes;
+      counterUnit.textContent = 'минут до запуска';
+    } else {
+      counterValue.textContent = seconds;
+      counterUnit.textContent = 'секунд до запуска';
+    }
+  } else {
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+    if (days > 0) {
+      counterValue.textContent = days.toLocaleString('ru-RU');
+      counterUnit.textContent = 'дней вместе с IDSCHOOL';
+    } else if (hours > 0) {
+      counterValue.textContent = hours;
+      counterUnit.textContent = 'часов вместе с IDSCHOOL';
+    } else if (minutes > 0) {
+      counterValue.textContent = minutes;
+      counterUnit.textContent = 'минут вместе с IDSCHOOL';
+    } else {
+      counterValue.textContent = seconds;
+      counterUnit.textContent = 'секунд вместе с IDSCHOOL';
+    }
+  }
+}
+
+updateCounter();
+setInterval(updateCounter, 1000);
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
