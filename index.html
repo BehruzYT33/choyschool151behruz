@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЧОУ СОШ №151 имени Бехруза | Онлайн-школа</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --primary:#1e3a8a;
+  --accent:#f59e0b;
+  --accent-2:#3b82f6;
+  --dark:#0f172a;
+  --light:#f8fafc;
+  --gradient: linear-gradient(135deg,#1e3a8a 0%,#3b82f6 50%,#06b6d4 100%);
+  --gradient-gold: linear-gradient(135deg,#f59e0b,#fbbf24);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden;line-height:1.6;}
+
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:float 20s ease-in-out infinite;}
+.blob.b1{width:500px;height:500px;background:#3b82f6;top:-100px;left:-100px;}
+.blob.b2{width:400px;height:400px;background:#f59e0b;top:40%;right:-150px;animation-delay:-5s;}
+.blob.b3{width:450px;height:450px;background:#06b6d4;bottom:-100px;left:30%;animation-delay:-10s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(60px,-40px) scale(1.1);}66%{transform:translate(-40px,60px) scale(.95);}}
+
+header{position:fixed;top:0;width:100%;z-index:1000;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s ease;background:transparent;}
+header.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);padding:12px 6%;box-shadow:0 4px 30px rgba(0,0,0,.08);}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#fff;transition:color .3s;text-decoration:none;}
+header.scrolled .logo{color:var(--primary);}
+.logo-icon{width:50px;height:50px;border-radius:14px;background:var(--gradient-gold);display:grid;place-items:center;font-size:1.5rem;color:#fff;box-shadow:0 8px 24px rgba(245,158,11,.4);animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.logo-text small{display:block;font-family:'Manrope';font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.75;}
+
+nav ul{display:flex;gap:32px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:6px 0;transition:color .3s;}
+header.scrolled nav a{color:var(--dark);}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width .3s;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--accent);}
+
+.btn-login{padding:12px 28px;border-radius:50px;background:var(--gradient-gold);color:#fff;font-weight:700;text-decoration:none;font-size:.9rem;box-shadow:0 8px 24px rgba(245,158,11,.4);transition:all .3s;display:flex;align-items:center;gap:8px;}
+.btn-login:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(245,158,11,.6);}
+.burger{display:none;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;}
+header.scrolled .burger{color:var(--dark);}
+
+.hero{min-height:100vh;position:relative;background:var(--gradient);display:flex;align-items:center;padding:140px 6% 80px;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%, rgba(255,255,255,.1) 0%, transparent 40%),radial-gradient(circle at 80% 70%, rgba(245,158,11,.15) 0%, transparent 40%);}
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;max-width:1400px;margin:0 auto;width:100%;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;border-radius:50px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:600;margin-bottom:24px;animation:fadeUp .8s ease both;}
+.hero-badge i{color:var(--accent);animation:spin 4s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:24px;animation:fadeUp .8s ease .1s both;}
+.hero h1 .accent{background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;}
+.hero p{color:rgba(255,255,255,.85);font-size:1.15rem;margin-bottom:36px;max-width:560px;animation:fadeUp .8s ease .2s both;}
+
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s ease .3s both;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .3s;border:none;cursor:pointer;}
+.btn-primary{background:var(--gradient-gold);color:#fff;box-shadow:0 12px 32px rgba(245,158,11,.5);}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(245,158,11,.7);}
+.btn-outline{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.4);backdrop-filter:blur(10px);}
+.btn-outline:hover{background:#fff;color:var(--primary);border-color:#fff;transform:translateY(-4px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-stats{display:flex;gap:40px;margin-top:50px;animation:fadeUp .8s ease .4s both;}
+.stat h3{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:#fff;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat p{font-size:.85rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+
+.hero-visual{position:relative;height:520px;animation:fadeUp .8s ease .3s both;}
+.hero-card{position:absolute;background:rgba(255,255,255,.95);border-radius:24px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.25);backdrop-filter:blur(20px);animation:floatCard 6s ease-in-out infinite;}
+.hero-card.c1{top:20px;left:0;width:260px;}
+.hero-card.c2{top:180px;right:0;width:280px;animation-delay:-2s;}
+.hero-card.c3{bottom:40px;left:60px;width:240px;animation-delay:-4s;}
+@keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+.hero-card i{font-size:2rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.hero-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;color:var(--primary);}
+.hero-card p{font-size:.85rem;color:#64748b;margin:0;}
+
+.section{padding:120px 6%;position:relative;}
+.section-title{text-align:center;max-width:800px;margin:0 auto 70px;}
+.section-tag{display:inline-block;padding:8px 20px;border-radius:50px;background:rgba(59,130,246,.1);color:var(--accent-2);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--primary);margin-bottom:16px;}
+.section-title p{color:#64748b;font-size:1.05rem;}
+
+.quote-block{max-width:1000px;margin:0 auto;padding:60px;background:var(--gradient);border-radius:32px;position:relative;overflow:hidden;text-align:center;box-shadow:0 40px 100px rgba(30,58,138,.3);}
+.quote-block::before{content:'\201C';position:absolute;top:-40px;left:40px;font-family:'Playfair Display',serif;font-size:12rem;color:rgba(255,255,255,.1);line-height:1;}
+.quote-block p{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);color:#fff;font-style:italic;margin-bottom:24px;position:relative;z-index:1;}
+.quote-block span{color:var(--accent);font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;}
+
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1300px;margin:0 auto;}
+.feature-card{background:#fff;padding:40px 32px;border-radius:24px;box-shadow:0 10px 40px rgba(30,58,138,.08);transition:all .4s;position:relative;overflow:hidden;border:2px solid transparent;}
+.feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gradient);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.feature-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(30,58,138,.15);border-color:rgba(59,130,246,.2);}
+.feature-card:hover::before{transform:scaleX(1);}
+.feature-icon{width:70px;height:70px;border-radius:20px;background:var(--gradient);display:grid;place-items:center;font-size:1.8rem;color:#fff;margin-bottom:24px;transition:transform .4s;box-shadow:0 12px 30px rgba(59,130,246,.35);}
+.feature-card:hover .feature-icon{transform:rotate(-8deg) scale(1.1);}
+.feature-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--primary);margin-bottom:12px;}
+.feature-card p{color:#64748b;font-size:.95rem;}
+
+.teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;max-width:1300px;margin:0 auto;}
+.teacher-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(30,58,138,.08);transition:all .4s;text-align:center;padding:32px 24px;}
+.teacher-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(30,58,138,.15);}
+.teacher-avatar{width:120px;height:120px;border-radius:50%;background:var(--gradient);margin:0 auto 20px;display:grid;place-items:center;font-size:3rem;color:#fff;font-family:'Playfair Display',serif;font-weight:900;position:relative;transition:transform .4s;}
+.teacher-card:hover .teacher-avatar{transform:scale(1.08) rotate(5deg);}
+.teacher-avatar::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:3px dashed var(--accent);animation:spin 12s linear infinite;}
+.teacher-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--primary);margin-bottom:6px;}
+.teacher-card p{color:#64748b;font-size:.9rem;margin-bottom:14px;}
+.teacher-social{display:flex;justify-content:center;gap:12px;}
+.teacher-social a{width:36px;height:36px;border-radius:50%;background:rgba(59,130,246,.1);color:var(--accent-2);display:grid;place-items:center;text-decoration:none;transition:all .3s;font-size:.9rem;}
+.teacher-social a:hover{background:var(--gradient);color:#fff;transform:translateY(-4px);}
+
+.cta-section{padding:120px 6%;}
+.cta-block{max-width:1200px;margin:0 auto;background:var(--gradient);border-radius:40px;padding:80px 60px;text-align:center;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(30,58,138,.35);}
+.cta-block::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,.4),transparent 70%);top:-200px;right:-100px;border-radius:50%;}
+.cta-block::after{content:'';position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(6,182,212,.4),transparent 70%);bottom:-150px;left:-80px;border-radius:50%;}
+.cta-block h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:20px;position:relative;z-index:1;}
+.cta-block p{color:rgba(255,255,255,.85);font-size:1.15rem;margin-bottom:36px;position:relative;z-index:1;max-width:600px;margin-left:auto;margin-right:auto;}
+.cta-block .btn{position:relative;z-index:1;}
+
+footer{background:var(--dark);color:#94a3b8;padding:80px 6% 30px;position:relative;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;max-width:1400px;margin:0 auto 60px;}
+.footer-col h4{color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:24px;}
+.footer-col p{font-size:.95rem;line-height:1.8;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:12px;}
+.footer-col ul a{color:#94a3b8;text-decoration:none;transition:all .3s;font-size:.95rem;display:inline-flex;align-items:center;gap:8px;}
+.footer-col ul a:hover{color:var(--accent);transform:translateX(5px);}
+.footer-social{display:flex;gap:12px;margin-top:20px;}
+.footer-social a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.05);color:#fff;display:grid;place-items:center;text-decoration:none;transition:all .3s;}
+.footer-social a:hover{background:var(--gradient-gold);transform:translateY(-4px);box-shadow:0 10px 25px rgba(245,158,11,.4);}
+.footer-bottom{max-width:1400px;margin:0 auto;padding-top:30px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem;}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+@media(max-width:968px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{height:400px;}
+  nav ul{display:none;}
+  .burger{display:block;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .hero-stats{flex-wrap:wrap;gap:24px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .quote-block{padding:40px 24px;}
+  .cta-block{padding:60px 30px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<header id="header">
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="logo-text">СОШ №151<small>имени Бехруза</small></div>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#about">О школе</a></li>
+      <li><a href="#features">Преимущества</a></li>
+      <li><a href="#teachers">Учителя</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="btn-login"><i class="fas fa-user-circle"></i> Личный кабинет</a>
+  <button class="burger"><i class="fas fa-bars"></i></button>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-star"></i> Онлайн-школа нового поколения</div>
+      <h1>Добро пожаловать в <span class="accent">ЧОУ СОШ №151</span> имени Бехруза</h1>
+      <p>Современное образование, где технологии встречаются с традициями. Мы готовим учеников к будущему через качественное обучение и индивидуальный подход.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary"><i class="fas fa-play-circle"></i> Начать обучение</a>
+        <a href="#about" class="btn btn-outline"><i class="fas fa-info-circle"></i> Узнать больше</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><h3>1500+</h3><p>Учеников</p></div>
+        <div class="stat"><h3>85+</h3><p>Учителей</p></div>
+        <div class="stat"><h3>98%</h3><p>Поступление</p></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card c1">
+        <i class="fas fa-laptop-code"></i>
+        <h4>Онлайн-классы</h4>
+        <p>Интерактивные уроки в прямом эфире</p>
+      </div>
+      <div class="hero-card c2">
+        <i class="fas fa-trophy"></i>
+        <h4>Олимпиады</h4>
+        <p>Победы на региональных и всероссийских этапах</p>
+      </div>
+      <div class="hero-card c3">
+        <i class="fas fa-book-open"></i>
+        <h4>Библиотека</h4>
+        <p>Более 10 000 цифровых материалов</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="quote-block reveal">
+    <p>Образование — это самое мощное оружие, которое вы можете использовать, чтобы изменить мир.</p>
+    <span>— Нельсон Мандела</span>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="section-title reveal">
+    <div class="section-tag">Преимущества</div>
+    <h2>Почему выбирают нас</h2>
+    <p>Мы создаём условия для гармоничного развития каждого ученика</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>Опытные педагоги</h3>
+      <p>Более 85 квалифицированных учителей с многолетним стажем работы</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-globe"></i></div>
+      <h3>Онлайн-формат</h3>
+      <p>Обучение из любой точки мира с доступом к современным материалам</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-flask"></i></div>
+      <h3>Современные классы</h3>
+      <p>Оборудованные лаборатории, компьютерные классы и творческие студии</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-users"></i></div>
+      <h3>Малые группы</h3>
+      <p>До 15 учеников в классе для индивидуального внимания каждому</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-medal"></i></div>
+      <h3>Высокие результаты</h3>
+      <p>98% выпускников поступают в ведущие вузы страны</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fas fa-heart"></i></div>
+      <h3>Тёплая атмосфера</h3>
+      <p>Дружелюбная среда, где каждый ученик чувствует поддержку</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="teachers">
+  <div class="section-title reveal">
+    <div class="section-tag">Команда</div>
+    <h2>Наши учителя</h2>
+    <p>Профессионалы, влюблённые в своё дело</p>
+  </div>
+  <div class="teachers-grid">
+    <div class="teacher-card reveal">
+      <div class="teacher-avatar">Б</div>
+      <h3>Бехруз Каримов</h3>
+      <p>Директор школы</p>
+      <div class="teacher-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="teacher-avatar">А</div>
+      <h3>Анна Петрова</h3>
+      <p>Учитель математики</p>
+      <div class="teacher-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="teacher-avatar">М</div>
+      <h3>Михаил Соколов</h3>
+      <p>Учитель физики</p>
+      <div class="teacher-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="teacher-avatar">Е</div>
+      <h3>Елена Иванова</h3>
+      <p>Учитель русского языка</p>
+      <div class="teacher-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-block reveal">
+    <h2>Готовы начать обучение?</h2>
+    <p>Присоединяйтесь к сообществу ЧОУ СОШ №151 имени Бехруза и откройте дверь в мир знаний</p>
+    <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> Подать заявку</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>ЧОУ СОШ №151</h4>
+      <p>Онлайн-школа имени Бехруза — современное образовательное пространство для всестороннего развития детей.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="#about"><i class="fas fa-chevron-right"></i> О школе</a></li>
+        <li><a href="#features"><i class="fas fa-chevron-right"></i> Преимущества</a></li>
+        <li><a href="#teachers"><i class="fas fa-chevron-right"></i> Учителя</a></li>
+        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Обучение</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Начальные классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Средние классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Старшие классы</a></li>
+        <li><a href="#"><i class="fas fa-chevron-right"></i> Онлайн-курсы</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i> г. Ташкент, ул. Школьная 151</a></li>
+        <li><a href="tel:+998901234567"><i class="fas fa-phone"></i> +998 90 123-45-67</a></li>
+        <li><a href="mailto:info@school151.uz"><i class="fas fa-envelope"></i> info@school151.uz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ЧОУ СОШ №151 имени Бехруза. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('active'), i * 100);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
