@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЧОУ СОШ №151 имени Бехруза | Ученики</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Unbounded:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --primary:#0a1f44;
+  --primary-light:#1e3a8a;
+  --accent:#f59e0b;
+  --accent-2:#06b6d4;
+  --accent-3:#8b5cf6;
+  --accent-4:#10b981;
+  --accent-5:#ec4899;
+  --dark:#050b1a;
+  --light:#f8fafc;
+  --gradient: linear-gradient(135deg,#0a1f44 0%,#1e3a8a 40%,#3b82f6 70%,#06b6d4 100%);
+  --gradient-gold: linear-gradient(135deg,#f59e0b,#fbbf24,#fcd34d);
+  --gradient-aurora: linear-gradient(135deg,#8b5cf6 0%,#06b6d4 50%,#10b981 100%);
+  --glass: rgba(255,255,255,.08);
+  --glass-border: rgba(255,255,255,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden;line-height:1.6;}
+
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#f8fafc 0%,#eff6ff 50%,#f8fafc 100%);}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.4;animation:float 25s ease-in-out infinite;}
+.blob.b1{width:600px;height:600px;background:radial-gradient(circle,#3b82f6,transparent 70%);top:-150px;left:-150px;}
+.blob.b2{width:500px;height:500px;background:radial-gradient(circle,#f59e0b,transparent 70%);top:35%;right:-200px;animation-delay:-8s;}
+.blob.b3{width:550px;height:550px;background:radial-gradient(circle,#06b6d4,transparent 70%);bottom:-150px;left:25%;animation-delay:-16s;}
+.blob.b4{width:400px;height:400px;background:radial-gradient(circle,#8b5cf6,transparent 70%);top:60%;left:-100px;animation-delay:-12s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(80px,-60px) scale(1.15);}50%{transform:translate(-50px,80px) scale(.9);}75%{transform:translate(60px,40px) scale(1.05);}}
+
+header{position:fixed;top:0;width:100%;z-index:1000;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.4,0,.2,1);background:transparent;}
+header.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(24px) saturate(180%);padding:14px 6%;box-shadow:0 8px 40px rgba(10,31,68,.1);border-bottom:1px solid rgba(255,255,255,.5);}
+.logo{display:flex;align-items:center;gap:14px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;transition:color .4s;text-decoration:none;}
+header.scrolled .logo{color:var(--primary);}
+.logo-icon{width:54px;height:54px;border-radius:16px;background:var(--gradient-gold);display:grid;place-items:center;font-size:1.6rem;color:#fff;box-shadow:0 10px 30px rgba(245,158,11,.5);animation:pulse 3s ease-in-out infinite;position:relative;overflow:hidden;}
+.logo-icon::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);animation:shine 3s linear infinite;}
+@keyframes shine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.logo-text small{display:block;font-family:'Manrope';font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.7;}
+
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:8px 0;transition:color .3s;}
+header.scrolled nav a{color:var(--dark);}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gradient-gold);transition:width .4s;border-radius:2px;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:var(--accent);}
+.burger{display:none;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none;}
+header.scrolled .burger{color:var(--dark);}
+
+.hero{min-height:70vh;position:relative;background:var(--gradient);display:flex;align-items:center;padding:180px 6% 100px;overflow:hidden;text-align:center;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%, rgba(255,255,255,.15) 0%, transparent 40%),radial-gradient(circle at 80% 70%, rgba(245,158,11,.2) 0%, transparent 40%);}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:50px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.85rem;font-weight:700;margin-bottom:28px;animation:fadeUp .8s ease both;}
+.hero-badge i{color:var(--accent);}
+.hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:24px;animation:fadeUp .8s ease .1s both;letter-spacing:-.02em;}
+.hero h1 .accent{background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{color:rgba(255,255,255,.85);font-size:1.15rem;margin-bottom:20px;animation:fadeUp .8s ease .2s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+.section{padding:100px 6%;position:relative;}
+.section-title{text-align:center;max-width:800px;margin:0 auto 60px;}
+.section-tag{display:inline-block;padding:10px 24px;border-radius:50px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(6,182,212,.12));color:var(--primary-light);font-size:.8rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;border:1px solid rgba(59,130,246,.15);}
+.section-title h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--primary);margin-bottom:20px;letter-spacing:-.02em;}
+.section-title h2 .grad{background:var(--gradient-aurora);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-title p{color:#64748b;font-size:1.1rem;}
+
+/* Фильтры */
+.filters{max-width:1200px;margin:0 auto 50px;display:flex;flex-direction:column;gap:24px;align-items:center;}
+.search-box{position:relative;width:100%;max-width:520px;}
+.search-box input{width:100%;padding:18px 24px 18px 56px;border-radius:50px;border:2px solid rgba(59,130,246,.15);background:#fff;font-size:1rem;font-family:'Manrope';outline:none;transition:all .3s;box-shadow:0 8px 30px rgba(10,31,68,.06);}
+.search-box input:focus{border-color:var(--accent);box-shadow:0 12px 40px rgba(245,158,11,.2);}
+.search-box i{position:absolute;left:22px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:1.1rem;}
+.class-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.class-btn{padding:10px 22px;border-radius:50px;border:2px solid rgba(59,130,246,.15);background:#fff;color:var(--primary);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;font-family:'Manrope';}
+.class-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);}
+.class-btn.active{background:var(--gradient-gold);color:#fff;border-color:transparent;box-shadow:0 10px 30px rgba(245,158,11,.4);}
+
+/* Карточки учеников */
+.students-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px;max-width:1400px;margin:0 auto;}
+.student-card{background:#fff;border-radius:24px;padding:30px 24px;box-shadow:0 10px 40px rgba(10,31,68,.08);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;border:1px solid rgba(59,130,246,.08);text-align:center;animation:cardIn .5s ease both;}
+@keyframes cardIn{from{opacity:0;transform:translateY(30px) scale(.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+.student-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--card-accent,var(--gradient));transform:scaleX(0);transform-origin:left;transition:transform .5s;}
+.student-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 70px rgba(10,31,68,.18);}
+.student-card:hover::before{transform:scaleX(1);}
+.student-avatar{width:80px;height:80px;border-radius:50%;background:var(--card-accent,var(--gradient));display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;margin:0 auto 18px;box-shadow:0 12px 30px rgba(59,130,246,.35);transition:transform .5s;}
+.student-card:hover .student-avatar{transform:rotate(-8deg) scale(1.1);}
+.student-name{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.3;min-height:2.6em;display:flex;align-items:center;justify-content:center;}
+.student-class{display:inline-block;padding:6px 18px;border-radius:50px;background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.1));color:var(--primary-light);font-weight:800;font-size:.85rem;letter-spacing:1px;border:1px solid rgba(59,130,246,.15);}
+.student-no-photo{font-size:.75rem;color:#94a3b8;margin-top:10px;font-style:italic;}
+
+.empty-state{text-align:center;padding:80px 20px;color:#94a3b8;font-size:1.1rem;grid-column:1/-1;}
+.empty-state i{font-size:3rem;margin-bottom:20px;display:block;color:#cbd5e1;}
+
+.counter{text-align:center;max-width:1200px;margin:0 auto 30px;color:#64748b;font-size:.95rem;font-weight:600;}
+.counter span{color:var(--accent);font-weight:800;font-size:1.1rem;}
+
+footer{background:var(--dark);color:#94a3b8;padding:60px 6% 30px;text-align:center;position:relative;}
+footer::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,.5),rgba(245,158,11,.5),transparent);}
+footer p{font-size:.9rem;}
+
+.reveal{opacity:0;transform:translateY(50px);transition:all 1s cubic-bezier(.4,0,.2,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+@media(max-width:968px){
+  nav ul{display:none;}
+  .burger{display:block;}
+  .hero{padding:140px 6% 80px;}
+  .section{padding:80px 6%;}
+  .students-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+}
+@media(max-width:600px){
+  .hero h1{font-size:1.8rem;}
+  .students-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .student-card{padding:20px 14px;border-radius:18px;}
+  .student-avatar{width:60px;height:60px;font-size:1.4rem;}
+  .student-name{font-size:.85rem;}
+  .student-class{font-size:.75rem;padding:5px 14px;}
+  .class-btn{padding:8px 16px;font-size:.8rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+
+<header id="header">
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="logo-text">
+      ЧОУ СОШ №151
+      <small>имени Бехруза</small>
+    </div>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#students">Ученики</a></li>
+      <li><a href="#about">О школе</a></li>
+    </ul>
+  </nav>
+  <button class="burger" onclick="document.querySelector('nav ul').style.display='flex'"><i class="fas fa-bars"></i></button>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><i class="fas fa-star"></i> Онлайн-школа</div>
+    <h1>Наши <span class="accent">ученики</span></h1>
+    <p>Всего в школе обучается <strong id="totalCount">158</strong> учеников</p>
+  </div>
+</section>
+
+<section class="section" id="students">
+  <div class="section-title reveal">
+    <div class="section-tag">Список учеников</div>
+    <h2>Найдите <span class="grad">своего ребёнка</span></h2>
+    <p>Используйте поиск или фильтр по классам</p>
+  </div>
+
+  <div class="filters reveal">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Поиск по ФИО...">
+    </div>
+    <div class="class-filters" id="classFilters"></div>
+  </div>
+
+  <div class="counter reveal">
+    Показано: <span id="shownCount">0</span> из <span id="totalCount2">0</span>
+  </div>
+
+  <div class="students-grid" id="studentsGrid"></div>
+</section>
+
+<footer>
+  <p>© 2026 ЧОУ СОШ №151 имени Бехруза. Все права защищены.</p>
+</footer>
+
+<script>
+// Данные учеников
+const students = [
+  {name:"Abdirashidov Sherali", cls:"6а", photo:true},
+  {name:"ABDULAZIZOVA MADINA", cls:"6а", photo:true},
+  {name:"Abdullayev Alisher", cls:"6б", photo:true},
+  {name:"ABDULLAYEV AZAMAT", cls:"6а", photo:false},
+  {name:"Abduqodirova Dilnoza", cls:"6а", photo:false},
+  {name:"Abdurakhmanov Ulugbek", cls:"6а", photo:false},
+  {name:"Afanasyev Andrey", cls:"6а", photo:false},
+  {name:"Alimov Davron", cls:"6а", photo:false},
+  {name:"Azimov Azizbek Ismoilovich", cls:"6б", photo:false},
+  {name:"G‘ofurov Otabek Murodovich", cls:"6б", photo:false},
+  {name:"Hamroyeva Dilnoza Anvar qizi", cls:"6б", photo:false},
+  {name:"Ismoilova Lobar Sanjar qizi", cls:"6б", photo:false},
+  {name:"Karimova Nigora Baxtiyor qizi", cls:"6б", photo:true},
+  {name:"Khalilov Farrukh", cls:"6а", photo:false},
+  {name:"Khamidova Nigora", cls:"6а", photo:false},
+  {name:"Mirzayev Behzod Tolibovich", cls:"6б", photo:false},
+  {name:"OBIDOVA CHAROSXON", cls:"6а", photo:false},
+  {name:"Raximov Jahongir Shavkatovich", cls:"6б", photo:false},
+  {name:"Saidova Zarina", cls:"6а", photo:false},
+  {name:"Saitova Madina Akmalovna", cls:"6б", photo:false},
+  {name:"Sultanova Sitora", cls:"6а", photo:false},
+  {name:"Sultonov Temur Botir o‘g‘li", cls:"6б", photo:false},
+  {name:"Toshpo‘latov Mansur Alisherovich", cls:"6б", photo:false},
+  {name:"Usmanov Sardor Farhodovich", cls:"6б", photo:false},
+  {name:"Usmanova Sabina", cls:"6а", photo:false},
+  {name:"VALIYEV AZAMAT", cls:"6а", photo:false},
+  {name:"XASANOVA DILDORA", cls:"6а", photo:false},
+  {name:"Xasanova Shahnoza Olim qizi", cls:"6б", photo:false},
+  {name:"Yuldasheva Zarina", cls:"6а", photo:false},
+  {name:"ZAKIROVA OLIGA", cls:"6а", photo:false},
+  {name:"Абдулазизова Нилуфар", cls:"6б", photo:true},
+  {name:"Абдусаломова Дилнозахон", cls:"10б", photo:false},
+  {name:"Алимов Фаррух", cls:"10б", photo:true},
+  {name:"Антонова Полина", cls:"7а", photo:false},
+  {name:"Арсеньева Варвара", cls:"11а", photo:true},
+  {name:"Артамонова Валерия Артёмовна", cls:"5в", photo:true},
+  {name:"Афанасьев Вячеслав", cls:"10а", photo:true},
+  {name:"Бабаева Наринэ", cls:"10б", photo:true},
+  {name:"Баженов Сергей Михайлович", cls:"5в", photo:false},
+  {name:"Балашова Ева", cls:"10а", photo:false},
+  {name:"Белов Артём", cls:"7а", photo:false},
+  {name:"Беляев Егор Романович", cls:"5б", photo:false},
+  {name:"Бердигулова Шугыла Такуевна", cls:"5а", photo:false},
+  {name:"Бирюкова Елена Матвеевна", cls:"5в", photo:false},
+  {name:"Богданов Тимур", cls:"6в", photo:false},
+  {name:"Бородин Святослав Степанович", cls:"5а", photo:false},
+  {name:"Бочарова Варвара Ивановна", cls:"5б", photo:false},
+  {name:"Быков Михаил", cls:"11а", photo:false},
+  {name:"Васильева София", cls:"7а", photo:false},
+  {name:"Вдовин Григорий Максимович", cls:"5б", photo:false},
+  {name:"Виникова Милана", cls:"10б", photo:false},
+  {name:"Воронин Сергей", cls:"10а", photo:false},
+  {name:"Воронцов Платон Русланович", cls:"5в", photo:false},
+  {name:"Гаврилова Анна", cls:"10а", photo:false},
+  {name:"Гайсин Самуил", cls:"10б", photo:false},
+  {name:"Галкина Евгения", cls:"10б", photo:false},
+  {name:"Головина Вероника", cls:"10а", photo:false},
+  {name:"Гордеев Константин", cls:"11а", photo:false},
+  {name:"Горелова Анастасия", cls:"10а", photo:false},
+  {name:"Григорьев Максим", cls:"7а", photo:false},
+  {name:"Громова Екатерина", cls:"6в", photo:false},
+  {name:"Гусев Артём", cls:"9а", photo:false},
+  {name:"Гусева Дарья Павловна", cls:"5б", photo:false},
+  {name:"Давыдов Иван", cls:"9а", photo:false},
+  {name:"Дёминова Надежда", cls:"10а", photo:false},
+  {name:"Дмитриева Алиса", cls:"7а", photo:false},
+  {name:"Долгова Алёна Матвеевна", cls:"5б", photo:false},
+  {name:"Доронина Агата", cls:"11а", photo:false},
+  {name:"Дорофеева Майя Ярославовна", cls:"6а", photo:false},
+  {name:"Егай Сергей", cls:"10б", photo:false},
+  {name:"Егоров Николай", cls:"7а", photo:false},
+  {name:"Егорова Варвара Дмитриевна", cls:"5а", photo:false},
+  {name:"Ефимов Ярослав", cls:"11а", photo:false},
+  {name:"Жукова Варвара", cls:"7а", photo:false},
+  {name:"Зайцев Данил", cls:"7а", photo:false},
+  {name:"Зорина Кира", cls:"11а", photo:false},
+  {name:"Зыкова Анастасия", cls:"9а", photo:false},
+  {name:"Иванов Тимофей Ильич", cls:"5в", photo:false},
+  {name:"Иванова Евгения", cls:"9а", photo:false},
+  {name:"Иванова Екатерина", cls:"7а", photo:false},
+  {name:"Игнатьев Олег", cls:"11а", photo:false},
+  {name:"Исаева Амелия", cls:"9а", photo:false},
+  {name:"Калинина Ульяна", cls:"10а", photo:false},
+  {name:"Ким Денис", cls:"10б", photo:false},
+  {name:"Ким Эльвина", cls:"10б", photo:false},
+  {name:"Князева Мария", cls:"11а", photo:false},
+  {name:"Козлов Владислав", cls:"10а", photo:false},
+  {name:"Козлов Матвей", cls:"6в", photo:false},
+  {name:"Козлова Маргарита Романовна", cls:"5а", photo:false},
+  {name:"Комилова Мафтуна", cls:"10б", photo:false},
+  {name:"Комиссаров Семён", cls:"10а", photo:false},
+  {name:"Кочетова Зоя Владиславовна", cls:"5в", photo:false},
+  {name:"Кочетова София", cls:"10а", photo:false},
+  {name:"Кузнецов Дмитрий", cls:"10а", photo:false},
+  {name:"Кузнецов Дмитрий", cls:"7а", photo:false},
+  {name:"Кулешов Мирон", cls:"10а", photo:false},
+  {name:"Лебедева София", cls:"6в", photo:false},
+  {name:"Лобанова Ксения Александровна", cls:"5а", photo:false},
+  {name:"Лукин Павел", cls:"11а", photo:false},
+  {name:"Лукьянова София", cls:"10а", photo:false},
+  {name:"Макаров Даниэль", cls:"10а", photo:false},
+  {name:"Макарова София Михайловна", cls:"5б", photo:false},
+  {name:"Максимов Данил Степанович", cls:"5а", photo:false},
+  {name:"Мальцева Алиса", cls:"6г", photo:false},
+  {name:"Матвеев Кирилл", cls:"6в", photo:false},
+  {name:"Мельникова Алина", cls:"11а", photo:false},
+  {name:"Михайлов Артур", cls:"9а", photo:false},
+  {name:"Морозова Анастасия", cls:"8а", photo:false},
+  {name:"Муравьева Алиса Германовна", cls:"5в", photo:false},
+  {name:"Никитина Эмилия Кирилловна", cls:"5в", photo:false},
+  {name:"Николаев Даниил", cls:"6а", photo:false},
+  {name:"Никонов Степан", cls:"6г", photo:false},
+  {name:"Новиков Илья", cls:"8а", photo:false},
+  {name:"Нурланова Жанна Искакқызы", cls:"5а", photo:false},
+  {name:"Овчинникова Анна", cls:"6г", photo:false},
+  {name:"Орлова Ксения", cls:"8а", photo:false},
+  {name:"Павлова Дарья", cls:"9а", photo:false},
+  {name:"Першин Матвей", cls:"6г", photo:false},
+  {name:"Петров Роман", cls:"8а", photo:false},
+  {name:"Поляков Даниил", cls:"9а", photo:false},
+  {name:"Пономарев Илья Филиппович", cls:"5б", photo:true},
+  {name:"Попов Арсений", cls:"6в", photo:false},
+  {name:"Попов Степан Станиславович", cls:"5б", photo:false},
+  {name:"Попова Милана Дмитриевна", cls:"5а", photo:false},
+  {name:"Прокофьев Максим Максимович", cls:"5в", photo:false},
+  {name:"Романова Вероника", cls:"8а", photo:false},
+  {name:"Рудаков Константин Андреевич", cls:"5в", photo:false},
+  {name:"Рябова Стефания", cls:"6г", photo:false},
+  {name:"Савельев Григорий Дмитриевич", cls:"5а", photo:false},
+  {name:"Салахутдинов Али", cls:"10б", photo:false},
+  {name:"Самохвалов Глеб", cls:"6г", photo:false},
+  {name:"Самсонов Артём Даниилович", cls:"", photo:false},
+  {name:"Семенов Платон Тимофеевич", cls:"5б", photo:false},
+  {name:"Сергеева Ольга", cls:"9а", photo:false},
+  {name:"Серяков Богдан", cls:"10б", photo:false},
+  {name:"Сидоров Тимофей", cls:"8а", photo:false},
+  {name:"Скворцова Мария Эминовна", cls:"5а", photo:false},
+  {name:"Смирнов Иван Михайлович", cls:"5а", photo:false},
+  {name:"Смирнова Милана", cls:"6в", photo:false},
+  {name:"Соколова Алиса", cls:"6в", photo:false},
+  {name:"Степанов Андрей", cls:"9а", photo:false},
+  {name:"Судаков Кирилл Ярославович", cls:"5б", photo:false},
+  {name:"Тарасова Алиса", cls:"6в", photo:false},
+  {name:"Татаринов Руслан", cls:"10б", photo:false},
+  {name:"Терентьева Евгения", cls:"6г", photo:false},
+  {name:"Тихонова Елизавета", cls:"8а", photo:false},
+  {name:"Токтарова Камила Ахметқызы", cls:"5а", photo:false},
+  {name:"Уваров Данил", cls:"6г", photo:false},
+  {name:"Фёдоров Макар", cls:"8а", photo:false},
+  {name:"Фетисова Антонина Михайловна", cls:"5а", photo:false},
+  {name:"Филиппова Виктория", cls:"8а", photo:false},
+  {name:"Фомина Виктория", cls:"6в", photo:false},
+  {name:"Фролова Есения", cls:"6г", photo:false},
+  {name:"Харитонов Ростислав", cls:"6г", photo:false},
+  {name:"Хохлова Полина", cls:"10а", photo:false},
+  {name:"Чернова Елизавета Саввична", cls:"5в", photo:false},
+  {name:"Шевцова Елена", cls:"9а", photo:false},
+  {name:"Яковлев Андрей", cls:"8а", photo:false}
+];
+
+const classOrder = ["5а","5б","5в","6а","6б","6в","6г","7а","8а","9а","10а","10б","11а",""];
+
+// Цвета для карточек по классам
+const classColors = {
+  "5а":"linear-gradient(135deg,#f59e0b,#fbbf24)",
+  "5б":"linear-gradient(135deg,#06b6d4,#22d3ee)",
+  "5в":"linear-gradient(135deg,#8b5cf6,#a78bfa)",
+  "6а":"linear-gradient(135deg,#10b981,#34d399)",
+  "6б":"linear-gradient(135deg,#ec4899,#f472b6)",
+  "6в":"linear-gradient(135deg,#3b82f6,#60a5fa)",
+  "6г":"linear-gradient(135deg,#f97316,#fb923c)",
+  "7а":"linear-gradient(135deg,#14b8a6,#2dd4bf)",
+  "8а":"linear-gradient(135deg,#a855f7,#c084fc)",
+  "9а":"linear-gradient(135deg,#ef4444,#f87171)",
+  "10а":"linear-gradient(135deg,#0ea5e9,#38bdf8)",
+  "10б":"linear-gradient(135deg,#84cc16,#a3e635)",
+  "11а":"linear-gradient(135deg,#eab308,#facc15)",
+  "":"linear-gradient(135deg,#64748b,#94a3b8)"
+};
+
+const grid = document.getElementById("studentsGrid");
+const searchInput = document.getElementById("searchInput");
+const classFilters = document.getElementById("classFilters");
+const shownCount = document.getElementById("shownCount");
+const totalCount2 = document.getElementById("totalCount2");
+const totalCount = document.getElementById("totalCount");
+
+let activeClass = "all";
+
+// Инициализация
+totalCount.textContent = students.length;
+totalCount2.textContent = students.length;
+
+// Получить уникальные классы
+const classes = [...new Set(students.map(s => s.cls))].sort((a,b) => classOrder.indexOf(a) - classOrder.indexOf(b));
+
+// Создать кнопки фильтров
+function createFilters(){
+  classFilters.innerHTML = `<button class="class-btn active" data-class="all">Все классы</button>`;
+  classes.forEach(c => {
+    const label = c === "" ? "Без класса" : c;
+    classFilters.innerHTML += `<button class="class-btn" data-class="${c}">${label}</button>`;
+  });
+  classFilters.querySelectorAll(".class-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      classFilters.querySelectorAll(".class-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeClass = btn.dataset.class;
+      render();
+    });
+  });
+}
+
+// Получить инициалы
+function getInitials(name){
+  const parts = name.trim().split(/\s+/);
+  if(parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return name.slice(0,2).toUpperCase();
+}
+
+// Рендер карточек
+function render(){
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = students.filter(s => {
+    const matchClass = activeClass === "all" || s.cls === activeClass;
+    const matchSearch = s.name.toLowerCase().includes(query);
+    return matchClass && matchSearch;
+  });
+
+  shownCount.textContent = filtered.length;
+
+  if(filtered.length === 0){
+    grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i>Ничего не найдено</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((s, i) => {
+    const color = classColors[s.cls] || classColors[""];
+    const classLabel = s.cls === "" ? "Без класса" : s.cls;
+    return `
+      <div class="student-card" style="--card-accent:${color}; animation-delay:${i * 0.03}s">
+        <div class="student-avatar">${getInitials(s.name)}</div>
+        <div class="student-name">${s.name}</div>
+        <div class="student-class">${classLabel}</div>
+        ${!s.photo ? '<div class="student-no-photo">Нет фотографии</div>' : ''}
+      </div>
+    `;
+  }).join("");
+}
+
+// Поиск
+searchInput.addEventListener("input", render);
+
+// Скролл хедера
+window.addEventListener("scroll", () => {
+  document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// Reveal анимация
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add("active");
+  });
+}, {threshold:0.1});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// Запуск
+createFilters();
+render();
+</script>
+</body>
+</html>
